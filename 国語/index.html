@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>6年国語漢字①</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+        
+        <h1>国語　漢字の読み</h1>     
+        <br />
+        <button @click="change1">{{ quest }}</button>
+        <div v-if="isActive1">
+          <p>{{ ans }}</p>
+        </div>
+        <br />
+        <button @click="change2">{{ quest1 }}</button>
+        <div v-if="isActive2">
+          <p>{{ ans1 }}</p>
+        </div>  
+        <br />
+        <button @click="change3">{{ quest2 }}</button>
+        <div v-if="isActive3">
+           <p>{{ ans2 }}</p>
+           
+        </div>
+        <br />     
+        <button @click="change4">{{ quest3 }}</button>
+        <div v-if="isActive4">
+           <p>{{ ans3 }}</p>
+           
+        </div>
+        <br />     
+        <button @click="change5">{{ quest4 }}</button>
+        <div v-if="isActive5">
+           <p>{{ ans4 }}</p>
+           
+        </div>
+        <br />     
+        <button @click="change6">{{ quest5 }}</button>
+        <div v-if="isActive6">
+           <p>{{ ans5 }}</p>
+           
+        </div>
+        <br />     
+    </div>
+   
+  </body>
+</html>
+
+<script>
+  const { createApp } = Vue;
+  
+  createApp({
+    data() {
+      return {       
+        isActive1: false,
+        isActive2: false,
+        isActive3: false,     
+        isActive4: false,
+        isActive5: false,
+        isActive6: false,     
+              
+        quest:"",
+        ans:"",
+        quest1:"",
+        ans1:"",
+        quest2:"",
+        ans2:"",
+        quest3:"",
+        ans3:"",
+        quest4:"",
+        ans4:"",
+        quest5:"",
+        ans5:"",
+      };
+    },
+    methods: {
+      change1() {
+        this.isActive1 = !this.isActive1;
+      },
+      change2() {
+        this.isActive2 = !this.isActive2;
+      },
+      change3() {
+        this.isActive3 = !this.isActive3;
+      },
+      change4() {
+        this.isActive4 = !this.isActive4;
+      },
+      change5() {
+        this.isActive5 = !this.isActive5;
+      },
+      change6() {
+        this.isActive6 = !this.isActive6;
+      },
+      makeRondom(){       
+        let array = [];
+        var randoms = [];
+        /** 最小値と最大値 */
+        var min = 0, max = 5;
+        
+        /** 重複チェックしながら乱数作成 */
+        for(i = min; i <= max; i++){
+        while(true){
+            const tmp = intRandom(min, max);
+            if(!randoms.includes(tmp)){
+            randoms.push(tmp);
+            break;
+            }
+         }
+        }
+       
+        /** min以上max以下の整数値の乱数を返す */
+        function intRandom(min, max){
+        return Math.floor( Math.random() * (max - min + 1)) + min;
+        }    
+        const num_arry=[["広い背中","ひろいせなか"],
+        ["話しの筋道","はなしのすじみち"],
+        ["幼児と遊ぶ","ようじとあそぶ"],
+        ["興奮する試合","こうふんするしあい"],
+        ["磁石の性質","じしゃくのせいしつ"],
+        ["降水量","こうすいりょう"],
+
+      ]
+
+        this.quest = num_arry[randoms[0]][0]
+        this.ans = num_arry[randoms[0]][1]
+       
+        this.quest1 = num_arry[randoms[1]][0]
+        this.ans1 = num_arry[randoms[1]][1]
+       
+        this.quest2 = num_arry[randoms[2]][0]
+        this.ans2 = num_arry[randoms[2]][1]
+
+        this.quest3 = num_arry[randoms[3]][0]
+        this.ans3 = num_arry[randoms[3]][1]
+        this.quest4 = num_arry[randoms[4]][0]
+        this.ans4 = num_arry[randoms[4]][1]
+        this.quest5 = num_arry[randoms[5]][0]
+        this.ans5 = num_arry[randoms[5]][1]
+       
+        // console.log(num_arry[randoms[2]])
+        console.log(this.quest1)  
+        
+        // const msg11 = this.msg+randoms[0] 
+      }      
+      
+    },
+    mounted: function(){       
+        this.makeRondom();
+    },
+  }).mount("#app");
+</script>
+
+<style>
+  #app {
+    width:100%;
+    background-color:gray;
+    text-align: center;
+    justify-content:center;
+    
+  }
+  h1 {
+    color: white;
+    margin-bottom:0;
+  }
+  button {
+    width: 600px;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    border: none;
+    color: white;
+    background-color: rgb(49, 48, 48);
+    border-radius: 2px;
+  }
+
+  p{
+    font-size:2rem;
+    padding:0;
+    margin:0;
+  }
+</style>
